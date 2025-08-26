@@ -1,6 +1,8 @@
 
+
 "use client";
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { useForm } from "../components/FormContext";
 
 const ProfilePage = () => {
@@ -23,7 +25,7 @@ const ProfilePage = () => {
 				<div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center mb-4">
 					{/* Avatar: fallback to initials if no image */}
 					{user.avatarUrl ? (
-						<img src={user.avatarUrl} alt="Avatar" className="w-24 h-24 rounded-full object-cover" />
+						<Image src={user.avatarUrl} alt="Avatar" width={96} height={96} className="w-24 h-24 rounded-full object-cover" />
 					) : (
 						<span className="text-4xl font-bold text-blue-700">
 							{user.fullname ? user.fullname[0].toUpperCase() : "U"}

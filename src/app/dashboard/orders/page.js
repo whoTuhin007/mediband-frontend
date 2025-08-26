@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const OrdersPage = () => {
   // Placeholder orders data
@@ -34,7 +35,7 @@ const OrdersPage = () => {
           </tbody>
         </table>
         <div className="mt-8 text-center text-gray-500">
-          <p>For order issues, <a href="/contact" className="text-blue-600 hover:underline">contact support</a>.</p>
+          <p>For order issues, <Link href="/contact" className="text-blue-600 hover:underline">contact support</Link>.</p>
         </div>
       </div>
     </div>

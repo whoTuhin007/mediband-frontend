@@ -85,9 +85,7 @@ const MedicalFormPage = () => {
           withCredentials: true,
         });
         setFormData(res.data.medRecord);
-           console.log(res.data.medRecord)
-
-
+        console.log(res.data.medRecord)
         setLoading(false);
       } catch (err) {
         setError('Failed to load medical form data');
@@ -95,7 +93,7 @@ const MedicalFormPage = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [setFormData]);
 
   return (
     <div className="min-h-screen flex flex-col   px-2 sm:px-4 bg-gradient-to-br from-blue-50 to-blue-200">

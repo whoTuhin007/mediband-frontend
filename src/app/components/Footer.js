@@ -1,4 +1,6 @@
+
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -11,9 +13,9 @@ const Footer = () => {
 
         {/* Center: Important Links */}
         <div className="flex space-x-6 mb-4 md:mb-0">
-          <a href="/privacy" className="hover:text-blue-400">Privacy Policy</a>
-          <a href="/terms" className="hover:text-blue-400">Terms of Service</a>
-          <a href="/faq" className="hover:text-blue-400">FAQ</a>
+          <Link href="/privacy" className="hover:text-blue-400">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-blue-400">Terms of Service</Link>
+          <Link href="/faq" className="hover:text-blue-400">FAQ</Link>
         </div>
 
         {/* Right: Contact & Social */}
