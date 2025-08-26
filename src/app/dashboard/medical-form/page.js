@@ -81,7 +81,7 @@ const MedicalFormPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${NEXT_PUBLIC_API_URL}/dashboard/medform`, {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/medform`, {
           withCredentials: true,
         });
         setFormData(res.data.medRecord);
@@ -98,77 +98,72 @@ const MedicalFormPage = () => {
   }, []);
 
   return (
-    <div className="md:text-3xl text-xl font-bold text-center w-full  h-full flex flex-col justify-center items-center ">
-      <div>Medical Form Data
-        <span>
-          <Button variant="outline" size="sm" className="ml-4" >
-            <Link href="/dashboard/medical-form/edit">
-              Edit Form
-            </Link>
-
+    <div className="min-h-screen flex flex-col   px-2 sm:px-4 bg-gradient-to-br from-blue-50 to-blue-200">
+      <div className="w-full max-w-3xl mx-auto">
+        <h1 className="text-3xl font-extrabold mb-6 text-center text-blue-900 drop-shadow">Medical Form Data</h1>
+        <div className="flex flex-wrap justify-center gap-4 mb-6">
+          <Button variant="outline" size="sm" className="px-6 py-2 font-semibold shadow hover:bg-blue-100 transition">
+            <Link href="/dashboard/medical-form/edit">Edit Form</Link>
           </Button>
-             
-        </span>
-        <span>
-          <Button variant="outline" size="sm" className="ml-4" onClick={handleDownloadPDF}> 
-             
-
-              Download Form
-            
+          <Button variant="outline" size="sm" className="px-6 py-2 font-semibold shadow hover:bg-blue-100 transition" onClick={handleDownloadPDF}>
+            Download Form
           </Button>
-          </span>
-      </div>
-      {loading && <p className="text-lg">Loading...</p>}
-      {error && <p className="text-red-500 text-lg">{error}</p>}
-      {formData && (
-  <div className="mt-4 text-left mx-auto w-full bg-white md:w-3/4 md:text-base text-sm font-normal overflow-scroll max-h-[60vh] overflow-x-hidden p-4 border rounded-lg">
-          
-
-          <p><strong>Age:</strong> {formData.age}</p>
-          <p><strong>Height:</strong> {formData.height} cm</p>
-          <p><strong>Weight:</strong> {formData.weight} kg</p>
-          <p><strong>Gender:</strong> {formData.gender}</p>
-          <p><strong>Blood Group:</strong> {formData.bloodGroup}</p>
-          <p><strong>Emergency Contact:</strong> {formData.emergencyContact}</p>
-          <p><strong>Allergies:</strong> {formData.allergies}</p>
-          <p><strong>Medication:</strong> {formData.medication}</p>
-          <p><strong>Medication List:</strong> {formData.medicationlist}</p>
-          <p><strong>Prescriptions:</strong> {formData.prescriptions && formData.prescriptions.join(', ')}</p>
-          <p><strong>Surgeries:</strong> {formData.surgeries}</p>
-          <div className="mt-2">
-            <strong>Family History:</strong>
-            <ul className="ml-4">
-              {formData.familyHistory && Object.entries(formData.familyHistory).map(([key, value]) => (
-                <li key={key}>{key}: {value ? 'Yes' : 'No'}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="mt-2">
-            <strong>Currently Experiencing:</strong>
-            <ul className="ml-4">
-              {formData.currentlyExperiencing && Object.entries(formData.currentlyExperiencing).map(([key, value]) => (
-                <li key={key}>{key}: {value ? 'Yes' : 'No'}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="mt-2">
-            <strong>Immunizations:</strong>
-            <ul className="ml-4">
-              {formData.immunizations && Object.entries(formData.immunizations).map(([key, value]) => (
-                <li key={key}>{key}: {value ? 'Yes' : 'No'}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="mt-2">
-            <strong>Lifestyle:</strong>
-            <ul className="ml-4">
-              {formData.lifestyle && Object.entries(formData.lifestyle).map(([key, value]) => (
-                <li key={key}>{key}: {value ? 'Yes' : 'No'}</li>
-              ))}
-            </ul>
-          </div>
         </div>
-      )}
+        {loading && <p className="text-lg">Loading...</p>}
+        {error && <p className="text-red-500 text-lg">{error}</p>}
+        {formData && (
+          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 text-base space-y-4 border border-blue-100 overflow-y-auto max-h-[50vh]" style={{
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#3b82f6 #e0e7ff',
+          }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+              <p><span className="font-semibold text-blue-700">Age:</span> {formData.age}</p>
+              <p><span className="font-semibold text-blue-700">Height:</span> {formData.height} cm</p>
+              <p><span className="font-semibold text-blue-700">Weight:</span> {formData.weight} kg</p>
+              <p><span className="font-semibold text-blue-700">Gender:</span> {formData.gender}</p>
+              <p><span className="font-semibold text-blue-700">Blood Group:</span> {formData.bloodGroup}</p>
+              <p><span className="font-semibold text-blue-700">Emergency Contact:</span> {formData.emergencyContact}</p>
+              <p><span className="font-semibold text-blue-700">Allergies:</span> {formData.allergies}</p>
+              <p><span className="font-semibold text-blue-700">Medication:</span> {formData.medication}</p>
+              <p><span className="font-semibold text-blue-700">Medication List:</span> {formData.medicationlist}</p>
+              <p><span className="font-semibold text-blue-700">Prescriptions:</span> {formData.prescriptions && formData.prescriptions.join(', ')}</p>
+              <p><span className="font-semibold text-blue-700">Surgeries:</span> {formData.surgeries}</p>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-lg font-bold text-blue-800 mb-2">Family History</h2>
+              <ul className="ml-4 list-disc grid grid-cols-2 gap-x-6 gap-y-1">
+                {formData.familyHistory && Object.entries(formData.familyHistory).map(([key, value]) => (
+                  <li key={key} className="capitalize">{key.replace(/([A-Z])/g, ' $1')}: <span className={value ? 'text-green-600' : 'text-red-500'}>{value ? 'Yes' : 'No'}</span></li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-lg font-bold text-blue-800 mb-2">Currently Experiencing</h2>
+              <ul className="ml-4 list-disc grid grid-cols-2 gap-x-6 gap-y-1">
+                {formData.currentlyExperiencing && Object.entries(formData.currentlyExperiencing).map(([key, value]) => (
+                  <li key={key} className="capitalize">{key.replace(/([A-Z])/g, ' $1')}: <span className={value ? 'text-green-600' : 'text-red-500'}>{value ? 'Yes' : 'No'}</span></li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-lg font-bold text-blue-800 mb-2">Immunizations</h2>
+              <ul className="ml-4 list-disc grid grid-cols-2 gap-x-6 gap-y-1">
+                {formData.immunizations && Object.entries(formData.immunizations).map(([key, value]) => (
+                  <li key={key} className="capitalize">{key.replace(/([A-Z])/g, ' $1')}: <span className={value ? 'text-green-600' : 'text-red-500'}>{value ? 'Yes' : 'No'}</span></li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-lg font-bold text-blue-800 mb-2">Lifestyle</h2>
+              <ul className="ml-4 list-disc grid grid-cols-2 gap-x-6 gap-y-1">
+                {formData.lifestyle && Object.entries(formData.lifestyle).map(([key, value]) => (
+                  <li key={key} className="capitalize">{key.replace(/([A-Z])/g, ' $1')}: <span className={value ? 'text-green-600' : 'text-red-500'}>{value ? 'Yes' : 'No'}</span></li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
