@@ -12,6 +12,7 @@ const OrdersPage = () => {
     <div className="min-h-screen flex flex-col  py-8 px-2 sm:px-4 bg-gradient-to-br from-blue-50 to-blue-200">
       <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-6 sm:p-8">
         <h1 className="text-3xl font-extrabold mb-6 text-blue-900 drop-shadow text-center">My Orders</h1>
+        <h1 className="text-3xl font-extrabold mb-6 text-blue-900 drop-shadow text-center">Get your NFC band now!</h1>
         <table className="w-full text-left border-separate border-spacing-y-2">
           <thead>
             <tr className="bg-blue-100">

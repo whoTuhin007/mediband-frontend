@@ -35,7 +35,7 @@ const Page = () => {
     return <p className="text-center mt-10">Loading...</p>;
   }
 
-  const qrUrl = `${process.env.NEXT_PUBLIC_URL}/${userId}`; // Redirects to frontend route (not backend)
+  const qrUrl = `/${userId}`; // Redirects to frontend route (not backend)
 
   // Download QR as image
   const handleDownloadQR = () => {
