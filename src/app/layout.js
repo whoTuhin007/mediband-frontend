@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./components/Navbar";
 import Footer from "./components/Footer";
 import { FormProvider } from "./components/FormContext";
+import { icons } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,6 +17,10 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "MediBand",
+  icons:{
+    icon: "/logo2.png",
+  },
+
   description: "A personal medical record management app",
 };
 

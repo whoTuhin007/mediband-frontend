@@ -6,7 +6,7 @@ import React, { useState } from "react";
 export default function AuthPage() {
     const router = useRouter();
     const [user, setUser] = useState(null);
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(false);
     const [error, setError] = useState(null);
     const [formData, setFormData] = useState({
         fullname: "",
